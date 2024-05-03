@@ -28,7 +28,7 @@ urllib3.disable_warnings()
 
 def _load_spec():
     with open('files/f5cm-apispec.json') as f:
-        spec = json.loads(f.read())
+        spec = json.load(f)
     return [public_path.get('x-f5-cm-public-api-path') for _, public_path in spec.get('paths').items()]
 
 
@@ -145,8 +145,6 @@ class NEXT:
     def load(self, path: str) -> Union[list[NextObject], NextObject]:
         """
         Loads one object or a list of objects from the device.
-        If you call with a specific object name, it returns a single object.
-        If you call without an object name, it returns a list of objects.
 
         Sends an HTTP GET request to the Central Manager REST API.
 
@@ -154,4 +152,42 @@ class NEXT:
             path: HTTP path used in the HTTP request sent to the device.
         """
         response = self._api_call('GET', path)
+        return response
+
+    def create(self, path: str, data: dict):
+        """
+        Creates objects on Central Manager or deploys objects to Instances.
+
+        Sends an HTTP POST request to the Central Manager REST API.
+
+        Arguments:
+            path: HTTP path used in the HTTP request sent to the device.
+            data: Dictionary of data to be sent to the Central Manager.
+        """
+        response = self._api_call('POST', path, data)
+        return response
+
+    def delete(self, path: str):
+        """
+        Deletes objects on Central Manager or removes objects from Instances.
+
+        Sends an HTTP DELETE request to the Central Manager REST API.
+
+        Arguments:
+            path: HTTP path used in the HTTP request sent to the device.
+        """
+        response = self._api_call('DELETE', path)
+        return response
+
+    def update(self, path: str, data: dict):
+        """
+        Updates objects on Central Manager or deploys objects to Instances.
+
+        Sends an HTTP PUT request to the Central Manager REST API.
+
+        Arguments:
+            path: HTTP path used in the HTTP request sent to the device.
+            data: Dictionary of data to be sent to the Central Manager.
+        """
+        response = self._api_call('PUT', path, data)
         return response
