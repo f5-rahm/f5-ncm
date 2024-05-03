@@ -5,6 +5,7 @@
 # Turns all annotations into string literals.
 # This is one exception to the external import rule.
 from __future__ import annotations
+from pathlib import Path
 from typing import Union
 import datetime
 import json
@@ -27,7 +28,7 @@ urllib3.disable_warnings()
 
 
 def _load_spec():
-    with open('files/f5cm-apispec.json') as f:
+    with open(Path(__file__).parent / 'files/f5cm-apispec.json') as f:
         spec = json.load(f)
     return [public_path.get('x-f5-cm-public-api-path') for _, public_path in spec.get('paths').items()]
 
