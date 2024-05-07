@@ -10,11 +10,11 @@ import json
 
 class NextObject:
     """
-    Represents an object created from a response of the iControl REST API.
+    Represents an object created from a response of the Central Manager API.
 
     Attributes:
         properties (dict): A dictionary representing the properties of the object as
-                           returned by the iControl REST API.
+                           returned by the Central Manager API.
     """
 
     def __init__(self, properties: dict):

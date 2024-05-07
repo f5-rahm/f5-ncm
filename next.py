@@ -15,7 +15,7 @@ import urllib3
 # Internal Imports
 # Import only with "from x import y", to simplify the code.
 
-from common.restobject import NextObject
+from common.nextobject import NextObject
 from common.exceptions import NextAPIError
 from common.exceptions import InvalidMethodError
 from common.exceptions import InvalidPathError
