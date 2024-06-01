@@ -33,7 +33,7 @@ def _load_spec():
     return [public_path.get('x-f5-cm-public-api-path') for _, public_path in spec.get('paths').items()]
 
 
-class NEXT:
+class Next:
     """
     Defines methods to call the REST API that can be used
     by Central Manager.
