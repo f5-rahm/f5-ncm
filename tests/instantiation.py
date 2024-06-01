@@ -1,11 +1,11 @@
 import pytest
 
-from next import NEXT
+from next import Next
 
 
 @pytest.fixture
 def next_instantiation():
-    return NEXT('cm', 'admin', 'CMletmein00!', session_verify=False)
+    return Next('cm', 'username', 'password', session_verify=False)
 
 
 def test_bearer_token_attributes_at_login(next_instantiation):
